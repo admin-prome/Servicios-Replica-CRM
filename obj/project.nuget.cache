@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fp//g5G6GDsHnXcF92dNiowgpgJPk6mEP4o2ZPeEXCc1iidlBtADCukTG+KVkdyNzduRTUlzHw9QkxGGXg8IBw==",
+  "dgSpecHash": "7zkzsxRw9Th07X9cyY6glmw8mFilb/TGVZcgqZnolWeLtdnoxDPpdl1IVaUP66HsZfsqFM0aTfMFdNEq4WkRbQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Colaborador\\source\\repos\\FogabaMailService\\Servicios-CRM-Replica.csproj",
+  "projectFilePath": "C:\\Users\\Colaborador\\Source\\Repos\\Servicios-Replica-CRM\\Servicios-CRM-Replica.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Colaborador\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Colaborador\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
