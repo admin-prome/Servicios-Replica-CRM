@@ -1,5 +1,6 @@
 ﻿using FogabaMailService.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
+using System.Text.Json;
 
 namespace Servicios_CRM_Replica.Services
 {
@@ -84,7 +85,8 @@ namespace Servicios_CRM_Replica.Services
                                    contactSubsidiary = contact.PnetSubsidaryNumber
                                })
                                .ToList();
-                return fogaba;
+
+                return JsonSerializer.Serialize(fogaba);
             }
             catch (Exception ex) {
                 throw new Exception(ex.Message);
