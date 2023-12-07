@@ -64,14 +64,16 @@ namespace Servicios_CRM_Replica.Services
                     .ToList();*/
 
                 var fogaba = (from opp in _dbProvMicroOpContext.OpportunityBases
-                              where opp.StatusCode == 102610002 && opp.PnetCreditocongarantiafogaba == true
-                              && opp.ModifiedOn >= last24h
+                              where 
+                              //opp.StatusCode == 102610002 && 
+                              opp.PnetCreditocongarantiafogaba == true
+                              //&& opp.ModifiedOn >= last24h
                               join contact in _dbProvMicroOpContext.ContactBases on opp.CustomerId equals contact.ContactId
                               join user in _dbProvMicroOpContext.SystemUserBases on opp.OwnerId equals user.SystemUserId
                               join subsidiary in _dbProvMicroOpContext.TeamBases on user.PnetSubsidiary equals subsidiary.TeamId
 
-                              join vt in _dbProvMicroOpContext.PnetSitevisitBases on opp.PnetSiteVisitNumber equals vt.PnetSitevisitId
-                              join vtConvenio in _dbProvMicroOpContext.PnetConveniosdecreditos on vt.PnetConvenio equals vtConvenio.PnetConveniosdecreditosId
+                              //join vt in _dbProvMicroOpContext.PnetSitevisitBases on opp.PnetSiteVisitNumber equals vt.PnetSitevisitId
+                              //join vtConvenio in _dbProvMicroOpContext.PnetConveniosdecreditos on vt.PnetConvenio equals vtConvenio.PnetConveniosdecreditosId
 
                               //join campaign in _dbProvMicroOpContext.CampaignResponseBases on opp.CampaignId equals campaign.PnetConvenio
                               //join campaignConvenio in _dbProvMicroOpContext.PnetConveniosdecreditos on campaign.PnetConvenio equals campaignConvenio.PnetConveniosdecreditosId
@@ -87,11 +89,11 @@ namespace Servicios_CRM_Replica.Services
                                   oppIRate = opp.PnetInterestRateAnual,
                                   oppAmortization = opp.PnetAmortizationsystem,
                                   //vtConvenioId = vt.PnetConvenio,
-                                  vtConvenioName = vtConvenio.PnetName,
+                                  //vtConvenioName = vtConvenio.PnetName,
                                   //campaignConvenio = campaign.PnetConvenio,
                                   //campConvenioName = campaignConvenio.PnetName,
                                   oppOwner = user.FullName,
-                                  //oppOwnerMail = user.InternalEmailAddress,
+                                  oppOwnerMail = user.InternalEmailAddress,
                                   //contactSubsidiary = contact.PnetSubsidaryNumber,
                                   subsidiaryName = subsidiary.Name
                               })
