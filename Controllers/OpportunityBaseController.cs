@@ -8,11 +8,11 @@ namespace FogabaMailService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class OpportuintyBaseController : ControllerBase
+    public class OpportunityBaseController : ControllerBase
     {
         private OpportunityBaseServices opportunityServices;
 
-        public OpportuintyBaseController(ProvMicroOpContext provMicroOpContext)
+        public OpportunityBaseController(ProvMicroOpContext provMicroOpContext)
         {
             this.opportunityServices = new OpportunityBaseServices(provMicroOpContext);
         }
@@ -31,7 +31,7 @@ namespace FogabaMailService.Controllers
                 response.Result = opportunityServices.getOpportunities(); //retorna json
                 response.StatusCode = System.Net.HttpStatusCode.OK;
 
-                Debug.WriteLine("Result: " + response.Result);
+                Console.WriteLine("Result: " + response.Result);
                 return Ok(response);
 
             }
