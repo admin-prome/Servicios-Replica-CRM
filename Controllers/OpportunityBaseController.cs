@@ -29,6 +29,7 @@ namespace FogabaMailService.Controllers
                 }
 
                 response.Result = opportunityServices.getOpportunities(); //retorna json
+
                 response.StatusCode = System.Net.HttpStatusCode.OK;
 
                 Console.WriteLine("Result: " + response.Result);

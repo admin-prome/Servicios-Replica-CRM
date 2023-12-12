@@ -75,8 +75,8 @@ namespace Servicios_CRM_Replica.Services
                               //join vt in _dbProvMicroOpContext.PnetSitevisitBases on opp.PnetSiteVisitNumber equals vt.PnetSitevisitId
                               //join vtConvenio in _dbProvMicroOpContext.PnetConveniosdecreditos on vt.PnetConvenio equals vtConvenio.PnetConveniosdecreditosId
 
-                              //join campaign in _dbProvMicroOpContext.CampaignResponseBases on opp.CampaignId equals campaign.PnetConvenio
-                              //join campaignConvenio in _dbProvMicroOpContext.PnetConveniosdecreditos on campaign.PnetConvenio equals campaignConvenio.PnetConveniosdecreditosId
+                              join campaign in _dbProvMicroOpContext.CampaignResponseBases on opp.PnetCampaignResponseId equals campaign.ActivityId
+                              join campaignConvenio in _dbProvMicroOpContext.PnetConveniosdecreditos on campaign.PnetConvenio equals campaignConvenio.PnetConveniosdecreditosId
                               select new
                               {
                                   contactName = contact.FullName,
@@ -87,11 +87,11 @@ namespace Servicios_CRM_Replica.Services
                                   oppAmount = opp.PnetCreditAmount,
                                   oppQuotas = opp.PnetQuotasNumber,
                                   oppIRate = opp.PnetInterestRateAnual,
-                                  oppAmortization = opp.PnetAmortizationsystem,
+                                  oppAmortization = getAmortizationName(opp.PnetAmortizationsystem),
                                   //vtConvenioId = vt.PnetConvenio,
                                   //vtConvenioName = vtConvenio.PnetName,
-                                  //campaignConvenio = campaign.PnetConvenio,
-                                  //campConvenioName = campaignConvenio.PnetName,
+                                  campaignConvenio = campaign.ActivityId,
+                                  campConvenioName = campaignConvenio.PnetName,
                                   oppOwner = user.FullName,
                                   oppOwnerMail = user.InternalEmailAddress,
                                   //contactSubsidiary = contact.PnetSubsidaryNumber,
@@ -107,5 +107,18 @@ namespace Servicios_CRM_Replica.Services
             }
         }
 
+        private static string getAmortizationName(int? value)
+        {
+            if (value == null)
+            {
+                throw new Exception("Empty value");
+            } else if (value == 102610000)
+            {
+                return "Francés";
+            } else
+            {
+                return "Alemán";
+            }
+        }
     }
 }
