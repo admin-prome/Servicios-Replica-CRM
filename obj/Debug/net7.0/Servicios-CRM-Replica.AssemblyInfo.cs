@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Servicios-CRM-Replica")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+61031a060ecca06ab023d017b84f8447c2cf9fed")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+980a5472e31a2c85ecc22a2c30827033d44b3285")]
 [assembly: System.Reflection.AssemblyProductAttribute("Servicios-CRM-Replica")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Servicios-CRM-Replica")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
