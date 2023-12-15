@@ -28,7 +28,13 @@ namespace FogabaMailService.Controllers
                     throw new Exception("OpportunityBaseServices is not initialized");
                 }
 
-                response.Result = opportunityServices.getOpportunities(); //retorna json
+                response.Result = opportunityServices.getOpportunities();
+
+                if (response.Result == null)
+                {
+                    response.StatusCode = System.Net.HttpStatusCode.BadRequest;
+                    return BadRequest("Empty result");
+                }
                 response.StatusCode = System.Net.HttpStatusCode.OK;
 
                 return Ok(response);

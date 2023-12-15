@@ -72,7 +72,7 @@ namespace Servicios_CRM_Replica.Services
                                         oppIRate = opp.PnetInterestRateAnual,
                                         oppAmortization = getAmortizationName(opp.PnetAmortizationsystem),
                                         campaignConvenio = campaign.ActivityId,
-                                         campConvenioName = campaignConvenio.PnetName,
+                                        campConvenioName = campaignConvenio.PnetName,
                                         oppOwner = user.FullName,
                                         oppOwnerMail = user.InternalEmailAddress,
                                         subsidiaryName = subsidiary.Name
