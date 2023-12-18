@@ -37,7 +37,7 @@ namespace FogabaMailService.Controllers
                 }
                 response.StatusCode = System.Net.HttpStatusCode.OK;
 
-                return Ok(response);
+                return response;
 
             }
             catch (Exception ex)

@@ -28,6 +28,7 @@ namespace Servicios_CRM_Replica.Services
                               join contact in _dbProvMicroOpContext.ContactBases on opp.CustomerId equals contact.ContactId
                               join user in _dbProvMicroOpContext.SystemUserBases on opp.OwnerId equals user.SystemUserId
                               join subsidiary in _dbProvMicroOpContext.TeamBases on user.PnetSubsidiary equals subsidiary.TeamId
+                              join zonalchief in _dbProvMicroOpContext.SystemUserBases on user.ParentSystemUserId equals zonalchief.SystemUserId
 
                               join vt in _dbProvMicroOpContext.PnetSitevisitBases on opp.PnetSiteVisitNumber equals vt.PnetSitevisitId
                               join vtConvenio in _dbProvMicroOpContext.PnetConveniosdecreditos on vt.PnetConvenio equals vtConvenio.PnetConveniosdecreditosId
@@ -42,11 +43,12 @@ namespace Servicios_CRM_Replica.Services
                                   oppQuotas = opp.PnetQuotasNumber,
                                   oppIRate = opp.PnetInterestRateAnual,
                                   oppAmortization = getAmortizationName(opp.PnetAmortizationsystem),
-                                  vtConvenioId = vt.PnetConvenio,
+                                  //vtConvenioId = vt.PnetConvenio,
                                   vtConvenioName = vtConvenio.PnetName,
                                   oppOwner = user.FullName,
                                   oppOwnerMail = user.InternalEmailAddress,
-                                  subsidiaryName = subsidiary.Name
+                                  subsidiaryName = subsidiary.Name,
+                                  zonalChief = zonalchief.FullName
                               }).ToList();
 
                 var campaignQuery = (from opp in _dbProvMicroOpContext.OpportunityBases
@@ -57,6 +59,7 @@ namespace Servicios_CRM_Replica.Services
                                     join contact in _dbProvMicroOpContext.ContactBases on opp.CustomerId equals contact.ContactId
                                     join user in _dbProvMicroOpContext.SystemUserBases on opp.OwnerId equals user.SystemUserId
                                     join subsidiary in _dbProvMicroOpContext.TeamBases on user.PnetSubsidiary equals subsidiary.TeamId
+                                    join zonalchief in _dbProvMicroOpContext.SystemUserBases on user.ParentSystemUserId equals zonalchief.SystemUserId
 
                                     join campaign in _dbProvMicroOpContext.CampaignResponseBases on opp.PnetCampaignResponseId equals campaign.ActivityId
                                     join campaignConvenio in _dbProvMicroOpContext.PnetConveniosdecreditos on campaign.PnetConvenio equals campaignConvenio.PnetConveniosdecreditosId
@@ -71,11 +74,12 @@ namespace Servicios_CRM_Replica.Services
                                         oppQuotas = opp.PnetQuotasNumber,
                                         oppIRate = opp.PnetInterestRateAnual,
                                         oppAmortization = getAmortizationName(opp.PnetAmortizationsystem),
-                                        campaignConvenio = campaign.ActivityId,
+                                        //campaignConvenio = campaign.ActivityId,
                                         campConvenioName = campaignConvenio.PnetName,
                                         oppOwner = user.FullName,
                                         oppOwnerMail = user.InternalEmailAddress,
-                                        subsidiaryName = subsidiary.Name
+                                        subsidiaryName = subsidiary.Name,
+                                        zonalChief = zonalchief.FullName
                                     }).ToList();
 
                 var fogabaQueries = vtQuery.Cast<object>().Concat(campaignQuery);
