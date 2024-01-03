@@ -102,32 +102,5 @@ namespace Servicios_CRM_Replica.Services
                 return "Alemán";
             }
         }
-
-        public object getOpportunities()
-        {
-            try
-            {
-
-                var query = (from opp in _dbProvMicroOpContext.OpportunityBases
-                             where )
-
-            } catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-        public Boolean validateTraspasoDeCarteraData(string data)
-        {
-            try 
-            {
-
-                var query 
-
-            } catch (Exception ex) 
-            {
-                throw new Exception(ex.Message);
-            }
-        }
     }
 }
