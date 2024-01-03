@@ -28,7 +28,7 @@ namespace FogabaMailService.Controllers
                     throw new Exception("OpportunityBaseServices is not initialized");
                 }
 
-                response.Result = opportunityServices.getOpportunities();
+                response.Result = opportunityServices.getFogabaOpportunities();
 
                 if (response.Result == null)
                 {
