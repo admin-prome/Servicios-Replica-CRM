@@ -21,7 +21,7 @@ namespace Servicios_CRM_Replica.Services
                 DateTime last24h = DateTime.Now.AddHours(-24);
 
                 var vtQuery = (from opp in _dbProvMicroOpContext.OpportunityBases
-                               where //opp.StatusCode == 102610002 &&
+                               where opp.StatusCode == 102610002 &&
                                opp.PnetCreditocongarantiafogaba == true
                                && opp.ModifiedOn >= last24h
 
@@ -51,7 +51,7 @@ namespace Servicios_CRM_Replica.Services
                                }).ToList();
 
                 var campaignQuery = (from opp in _dbProvMicroOpContext.OpportunityBases
-                                     where //opp.StatusCode == 102610002 &&
+                                     where opp.StatusCode == 102610002 &&
                                      opp.PnetCreditocongarantiafogaba == true
                                      && opp.ModifiedOn >= last24h
 
