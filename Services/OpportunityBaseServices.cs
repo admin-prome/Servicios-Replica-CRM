@@ -18,7 +18,7 @@ namespace Servicios_CRM_Replica.Services
         {
             try
             {
-                DateTime last24h = DateTime.Now.AddHours(-24);
+                DateTime last24h = DateTime.Now.AddHours(-26);
 
                 var vtQuery = (from opp in _dbProvMicroOpContext.OpportunityBases
                                where opp.StatusCode == 102610002 &&
